@@ -4,29 +4,34 @@ class ReWrites {
     private final static Scanner s = new Scanner(System.in);
 
     public static void avgRewrite() {
+
         String l;
         double sum = 0.0;
-        int count = 0;
+        int count;
+
         System.out.println("Ths program will calculate the average of numbers entered. Begin entering and enter \"Q\" to quit.");
-        while(!(l = s.nextLine()).toUpperCase().equals("Q")) {
+
+        for(count = 0; !(l = s.nextLine()).equalsIgnoreCase("Q"); count++) {
             try {
                 sum += Integer.parseInt(l);
-                count++;
             } catch (NumberFormatException nfe) {}
         }
 
         System.out.printf("Average is: %f%n", (sum/count));
     }
+
     public static void sumRewrite() {
         Scanner in = new Scanner(System.in);
         System.out.println("Type positive integers to sum. To stop, type 0...");
         int x = -1;
         int sum = 0;
 
-        while (true) {
+        boolean running = true;
+
+        while (running) {
             try {
                 if(x == 0) {
-                    break;
+                    running = false;
                 }
                 x = Integer.parseInt(in.nextLine());
                 if (x <= 0) {
